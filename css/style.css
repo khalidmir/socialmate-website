@@ -396,7 +396,7 @@ section {
 
 .grid-3-fixed {
   display: grid;
-  grid-template-columns: repeat(3, minmax(350px, 1fr));
+  grid-template-columns: 1fr 1fr 1fr !important;
   gap: 2rem;
   width: 100%;
   max-width: 100%;
@@ -405,6 +405,12 @@ section {
 .grid-3-fixed .card {
   min-width: 0;
   overflow: hidden;
+}
+
+@supports (display: grid) {
+  .grid-3-fixed {
+    grid-template-columns: 1fr 1fr 1fr !important;
+  }
 }
 
 @media (max-width: 1200px) {
