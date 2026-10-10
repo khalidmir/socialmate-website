@@ -1,0 +1,8 @@
+# Redirect .html to clean URLs (optional - depends on CF Pages setting)
+# CF Pages handles this with SPA mode if configured
+
+# Redirect www to apex
+https://www.socialmate.org/* https://socialmate.org/:splat 301
+
+# Keep all other paths as-is
+/*  /:splat 200

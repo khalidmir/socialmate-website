@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Events | Social Mate Events UAE | Dubai Networking & Conferences</title>
+  <meta name="description" content="Discover upcoming business networking events, conferences, and startup meetups in Dubai. Browse our curated events calendar and register today.">
+  <meta name="keywords" content="events Dubai, networking events UAE, business conferences Dubai, startup meetups, professional events">
+
+  <meta property="og:title" content="Events | Social Mate Events UAE">
+  <meta property="og:description" content="Discover upcoming business networking events, conferences, and startup meetups in Dubai and the UAE.">
+  <meta property="og:url" content="https://socialmate.org/events">
+  <link rel="canonical" href="https://socialmate.org/events">
+
+  <link rel="icon" type="image/png" href="/assets/images/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <!-- Navigation -->
+  <header>
+    <nav class="container" style="display: flex; justify-content: space-between; align-items: center; padding: 1rem 0;">
+      <div class="logo">
+        <div class="logo-icon">SM</div>
+        <span>Social Mate</span>
+      </div>
+
+      <ul class="nav-menu" style="list-style: none; display: flex; gap: 2.5rem;">
+        <li><a href="/">Home</a></li>
+        <li><a href="/events.html">Events</a></li>
+        <li><a href="/networking.html">Networking</a></li>
+        <li><a href="/services.html">Services</a></li>
+        <li><a href="/about.html">About</a></li>
+        <li><a href="/contact.html" class="nav-cta">Get in Touch</a></li>
+      </ul>
+
+      <div class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero" style="padding: 4rem 2rem;">
+    <div class="container">
+      <div class="hero-content" style="text-align: center;">
+        <h1>Upcoming Events</h1>
+        <p class="hero-description">Discover our calendar of business networking events, conferences, and community experiences.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Events Filters & Listing -->
+  <section style="background: var(--primary-darker); padding: 3rem 2rem;">
+    <div class="container">
+      <div style="display: grid; grid-template-columns: 250px 1fr; gap: 2rem; margin-bottom: 3rem;">
+        <!-- Sidebar Filters -->
+        <div style="background: var(--neutral-gray); border: 1px solid var(--border-color); border-radius: 12px; padding: 1.5rem; height: fit-content;">
+          <h3 style="margin-bottom: 1.5rem;">Filter Events</h3>
+
+          <div style="margin-bottom: 2rem;">
+            <h4 style="font-size: 0.95rem; margin-bottom: 0.75rem; text-transform: uppercase;">Category</h4>
+            <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+              <label class="checkbox-group">
+                <input type="checkbox" checked>
+                <span>Business Networking</span>
+              </label>
+              <label class="checkbox-group">
+                <input type="checkbox" checked>
+                <span>Conferences</span>
+              </label>
+              <label class="checkbox-group">
+                <input type="checkbox" checked>
+                <span>Startup Meetups</span>
+              </label>
+              <label class="checkbox-group">
+                <input type="checkbox" checked>
+                <span>Exhibitions</span>
+              </label>
+              <label class="checkbox-group">
+                <input type="checkbox" checked>
+                <span>Corporate Events</span>
+              </label>
+            </div>
+          </div>
+
+          <div style="margin-bottom: 2rem;">
+            <h4 style="font-size: 0.95rem; margin-bottom: 0.75rem; text-transform: uppercase;">Time Frame</h4>
+            <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+              <label class="checkbox-group">
+                <input type="radio" name="timeframe" checked>
+                <span>All Events</span>
+              </label>
+              <label class="checkbox-group">
+                <input type="radio" name="timeframe">
+                <span>Upcoming</span>
+              </label>
+              <label class="checkbox-group">
+                <input type="radio" name="timeframe">
+                <span>This Month</span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Events Grid -->
+        <div>
+          <div style="background: rgba(255, 107, 74, 0.1); border: 1px solid var(--border-color); border-radius: 12px; padding: 2rem; text-align: center;">
+            <h3 style="margin-bottom: 0.5rem;">Exciting events are coming soon.</h3>
+            <p style="color: var(--text-secondary);">We're curating premium networking experiences and business events for Dubai. Check back regularly for announcements on upcoming gatherings.</p>
+            <a href="/contact.html" class="btn btn-primary" style="margin-top: 1.5rem;">Get Notified of New Events</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Event Detail Template (hidden for now, shows on event click) -->
+  <section id="event-detail" class="hidden" style="background: var(--primary-dark); padding: 3rem 2rem;">
+    <div class="container">
+      <a href="/events.html" style="color: var(--accent-coral); margin-bottom: 2rem; display: inline-block;">← Back to Events</a>
+
+      <div class="feature-grid" style="margin-bottom: 3rem;">
+        <div class="feature-image" style="background: linear-gradient(135deg, var(--accent-coral), var(--accent-orange)); border-radius: 12px; height: 400px; display: flex; align-items: center; justify-content: center; color: white; font-weight: 600;">
+          [Event Hero Image]
+        </div>
+        <div>
+          <div class="event-category">Event Category</div>
+          <h1>Event Title</h1>
+          <p style="font-size: 1.1rem; color: var(--text-secondary); margin: 1.5rem 0;">Event description goes here with compelling details about what attendees can expect.</p>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin: 2rem 0;">
+            <div>
+              <strong style="color: var(--text-secondary); display: block; font-size: 0.9rem; text-transform: uppercase; margin-bottom: 0.25rem;">Date & Time</strong>
+              <p>Coming Soon</p>
+            </div>
+            <div>
+              <strong style="color: var(--text-secondary); display: block; font-size: 0.9rem; text-transform: uppercase; margin-bottom: 0.25rem;">Venue</strong>
+              <p>Dubai, UAE</p>
+            </div>
+          </div>
+
+          <a href="/contact.html?type=event-inquiry" class="btn btn-primary" style="margin-top: 2rem;">Get More Information</a>
+        </div>
+      </div>
+
+      <div style="background: var(--neutral-gray); border: 1px solid var(--border-color); border-radius: 12px; padding: 2rem;">
+        <h2>About This Event</h2>
+        <p>Detailed event information, agenda, speakers, and other relevant details will be published here closer to the event date.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section style="background: var(--primary-darker);">
+    <div class="container">
+      <div class="cta-section">
+        <h2>Stay Updated on New Events</h2>
+        <p>Subscribe to our mailing list to receive announcements about upcoming networking events, conferences, and special experiences.</p>
+        <div style="background: var(--neutral-gray); border: 1px solid var(--border-color); border-radius: 12px; padding: 2rem; max-width: 500px; margin: 2rem auto 0;">
+          <form id="newsletter-form" style="display: flex; flex-direction: column; gap: 1rem;">
+            <input type="email" name="email" placeholder="Enter your email address" required style="margin-bottom: 0;">
+            <button type="submit" class="btn btn-primary" style="width: 100%;">Subscribe</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h4>Social Mate</h4>
+          <p style="font-size: 0.9rem; color: var(--text-secondary);">Premium events and networking experiences connecting professionals and entrepreneurs across Dubai and the UAE.</p>
+          <p style="font-size: 0.9rem; color: var(--text-secondary); margin-top: 1rem;">📍 Dubai, United Arab Emirates</p>
+        </div>
+
+        <div class="footer-section">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/events.html">Events</a></li>
+            <li><a href="/networking.html">Networking</a></li>
+            <li><a href="/services.html">Services</a></li>
+            <li><a href="/about.html">About</a></li>
+            <li><a href="/contact.html">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h4>Follow Us</h4>
+          <div class="social-links">
+            <a href="https://linkedin.com/company/socialmateevents" target="_blank" title="LinkedIn">in</a>
+            <a href="https://instagram.com/socialmateevents" target="_blank" title="Instagram">📷</a>
+            <a href="https://facebook.com/socialmateevents" target="_blank" title="Facebook">f</a>
+          </div>
+        </div>
+
+        <div class="footer-section">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="/privacy.html">Privacy Policy</a></li>
+            <li><a href="/terms.html">Terms & Conditions</a></li>
+            <li><a href="/cookies.html">Cookie Policy</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© <span id="current-year">2026</span> Social Mate Events UAE. All rights reserved. | Connecting People. Creating Opportunities.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /private/
+
+Sitemap: https://socialmate.org/sitemap.xml
+
+# Block specific paths
+Disallow: /api/
+Disallow: /*.json$
+Disallow: /*?*
+
+# Allow search engines to crawl
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
