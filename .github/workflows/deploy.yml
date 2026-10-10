@@ -1,0 +1,20 @@
+name: Deploy to Cloudflare Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Deploy to Cloudflare Pages
+        run: |
+          npm install -g wrangler
+          wrangler pages deploy . --project-name=socialmate
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CF_TOKEN_SOCIALMATE }}
+          CLOUDFLARE_ACCOUNT_ID: fbd93412906e1405f1b4aa34891870bb
