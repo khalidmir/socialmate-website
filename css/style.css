@@ -384,8 +384,20 @@ section {
 
 .grid-3 {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: 1fr 1fr 1fr !important;
   gap: 2.5rem;
+}
+
+@media (max-width: 900px) {
+  .grid-3 {
+    grid-template-columns: 1fr 1fr !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .grid-3 {
+    grid-template-columns: 1fr !important;
+  }
 }
 
 .grid-4 {
@@ -415,14 +427,14 @@ section {
 
 @media (max-width: 1200px) {
   .grid-3-fixed {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 1fr 1fr 1fr !important;
     gap: 1.5rem;
   }
 }
 
 @media (max-width: 900px) {
   .grid-3-fixed {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr 1fr !important;
     gap: 1.5rem;
   }
 }
@@ -433,7 +445,7 @@ section {
   }
 
   .grid-3-fixed {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr !important;
     gap: 1rem;
   }
 }
