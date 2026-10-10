@@ -1,11 +1,25 @@
 export async function onRequest(context) {
   try {
     const baseUrl = 'https://socialmate.org';
-    const blogPostsResponse = await fetch(`${baseUrl}/blog-posts.json`);
-    const jobsResponse = await fetch(`${baseUrl}/jobs-openings.json`);
+
+    // Fetch with timeout to prevent Cloudflare Functions from timing out
+    const fetchWithTimeout = (url, timeout = 10000) => {
+      return Promise.race([
+        fetch(url),
+        new Promise((_, reject) =>
+          setTimeout(() => reject(new Error('Fetch timeout')), timeout)
+        )
+      ]);
+    };
+
+    const blogPostsResponse = await fetchWithTimeout(`${baseUrl}/blog-posts.json`);
+    const jobsResponse = await fetchWithTimeout(`${baseUrl}/jobs-openings.json`);
 
     if (!blogPostsResponse.ok || !jobsResponse.ok) {
-      console.error('Failed to fetch data files');
+      console.error('Failed to fetch data files', {
+        blog: blogPostsResponse.status,
+        jobs: jobsResponse.status
+      });
       return new Response('Data files not found', { status: 404 });
     }
 
