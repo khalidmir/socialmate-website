@@ -1,18 +1,56 @@
+# Default rules for all crawlers
 User-agent: *
 Allow: /
 Disallow: /admin/
 Disallow: /private/
+Disallow: /api/
 
+# XML Sitemap
 Sitemap: https://socialmate.org/sitemap.xml
 
-# Block specific paths
-Disallow: /api/
-Disallow: /*.json$
-Disallow: /*?*
+# AI-powered search crawlers - allow indexing
+User-agent: GPTBot
+Allow: /
 
-# Allow search engines to crawl
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+# Google search
 User-agent: Googlebot
 Allow: /
+Crawl-delay: 0
 
+# Microsoft Bing
 User-agent: Bingbot
 Allow: /
+Crawl-delay: 0
+
+# Google News
+User-agent: Googlebot-News
+Allow: /
+
+# Apple Siri
+User-agent: Applebot
+Allow: /
+
+# Amazon/Alexa
+User-agent: ec2instances
+Allow: /
+
+# Note: Query strings and dynamic parameters are allowed
+# This allows proper crawling of events and pages with parameters
