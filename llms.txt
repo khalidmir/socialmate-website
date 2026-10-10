@@ -66,6 +66,22 @@ https://socialmate.org/contact.html
 
 Get in touch with Social Mate to plan your event, discuss partnerships, or learn about networking opportunities in Dubai.
 
+### Blog & Resources
+https://socialmate.org/blog.html
+
+Expert insights, professional networking tips, event planning guides, and business community trends in Dubai. Blog content includes articles on networking strategies, event ROI measurement, market trends, and corporate event planning.
+
+**Dynamic Blog Content:**
+Blog posts are stored in /blog-posts.json and automatically included in the XML sitemap at https://socialmate.org/sitemap.xml. New posts are automatically indexed when added to the data source. Individual blog posts are accessible at https://socialmate.org/blog/{post-slug}.html
+
+### Careers
+https://socialmate.org/careers.html
+
+Explore career opportunities at Social Mate across departments including Events Management, Marketing, Community Building, and Business Development. We're building a team of passionate professionals dedicated to creating meaningful business connections in Dubai.
+
+**Dynamic Job Listings:**
+Current open positions are stored in /jobs-openings.json and automatically updated on the careers page. New job postings are instantly visible to candidates when added to the data source. Job opportunities at Social Mate span from entry-level to senior roles, with focus on professional growth and community impact.
+
 ## Key Topics & Keywords
 
 - Business networking Dubai
@@ -90,9 +106,24 @@ Get in touch with Social Mate to plan your event, discuss partnerships, or learn
 **Brand Partners:**
 Powered by Kreative Minds (https://kreativeminds.ae)
 
+## Dynamic Content & Sitemap
+
+**Automatic Sitemap Generation:**
+The website uses dynamic sitemap generation via /sitemap.xml. This function automatically:
+- Indexes all main pages (homepage, events, networking, services, about, contact, blog)
+- Includes all blog posts from blog-posts.json
+- Updates priorities based on content type
+- Maintains freshness signals (lastmod dates)
+- Provides proper changefreq for crawlers
+
+When new blog posts are added to /blog-posts.json, they automatically appear in:
+- The blog listing page (/blog.html)
+- The XML sitemap (/sitemap.xml)
+- Search engine indexation
+
 ## Content Quality & Accuracy
 
-All event information, service descriptions, and business details on the Social Mate website are accurate and maintained current. The platform connects real professionals and businesses seeking meaningful networking opportunities in Dubai and the UAE.
+All event information, service descriptions, and business details on the Social Mate website are accurate and maintained current. The platform connects real professionals and businesses seeking meaningful networking opportunities in Dubai and the UAE. Blog content provides genuine insights from professional networking experts and event industry professionals.
 
 ## Privacy & Legal
 

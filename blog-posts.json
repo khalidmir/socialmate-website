@@ -1,0 +1,50 @@
+[
+  {
+    "id": "networking-2026-10-tips",
+    "slug": "networking-2026-10-tips",
+    "title": "10 Professional Networking Tips for Dubai Entrepreneurs in 2026",
+    "description": "Master the art of professional networking at Social Mate events with these proven strategies for making meaningful business connections.",
+    "category": "Networking Tips",
+    "date": "2026-10-08",
+    "author": "Social Mate Team",
+    "readTime": 6,
+    "featured": true,
+    "content": "Professional networking is more than just collecting business cards. At Social Mate, we've seen countless entrepreneurs build transformative connections. Here are our top 10 tips for maximizing your networking potential at our events..."
+  },
+  {
+    "id": "startup-events-roi",
+    "slug": "startup-events-roi",
+    "title": "How to Measure ROI from Business Networking Events",
+    "description": "Learn how startup founders and business professionals calculate return on investment from attending conferences and networking meetups.",
+    "category": "Event Insights",
+    "date": "2026-10-05",
+    "author": "Social Mate Team",
+    "readTime": 7,
+    "featured": true,
+    "content": "Attending business events is an investment. But how do you know if it's paying off? We'll walk through practical metrics and frameworks used by successful entrepreneurs..."
+  },
+  {
+    "id": "dubai-business-community",
+    "slug": "dubai-business-community",
+    "title": "The Growing Dubai Business Community: Trends and Opportunities",
+    "description": "Explore emerging trends in Dubai's professional networking scene and discover where business opportunities are emerging in 2026.",
+    "category": "Market Trends",
+    "date": "2026-10-01",
+    "author": "Social Mate Team",
+    "readTime": 8,
+    "featured": false,
+    "content": "Dubai's business ecosystem continues to evolve rapidly. From fintech startups to corporate consolidations, the landscape offers diverse opportunities for networking..."
+  },
+  {
+    "id": "corporate-events-planning",
+    "slug": "corporate-events-planning",
+    "title": "Planning Your Next Corporate Event: A Complete Guide",
+    "description": "Comprehensive guide to organizing corporate events, team building activities, and professional conferences in Dubai.",
+    "category": "Event Planning",
+    "date": "2026-09-28",
+    "author": "Social Mate Team",
+    "readTime": 10,
+    "featured": false,
+    "content": "Corporate events are critical touchpoints for building company culture and industry relationships. Whether you're planning a small team lunch or a large conference..."
+  }
+]

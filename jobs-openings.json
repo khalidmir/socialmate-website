@@ -1,0 +1,114 @@
+[
+  {
+    "id": "events-manager-2026",
+    "title": "Senior Events Manager",
+    "department": "Operations",
+    "location": "Dubai, UAE",
+    "type": "Full-time",
+    "level": "Senior",
+    "salary": "AED 8,000 - 12,000",
+    "description": "We're looking for an experienced Senior Events Manager to lead our event execution team. You'll be responsible for end-to-end event management, vendor coordination, and ensuring exceptional attendee experiences.",
+    "responsibilities": [
+      "Plan and execute 15+ networking events annually",
+      "Manage vendor relationships and negotiate contracts",
+      "Lead event setup, registration, and post-event analysis",
+      "Coordinate with marketing and community teams",
+      "Ensure compliance with local regulations",
+      "Gather feedback and optimize event experiences"
+    ],
+    "requirements": [
+      "5+ years of event management experience",
+      "Proven track record with professional/corporate events",
+      "Strong project management skills",
+      "Excellent communication and negotiation abilities",
+      "Experience with event software and tools",
+      "Knowledge of Dubai's business landscape"
+    ],
+    "postedDate": "2026-10-08",
+    "featured": true
+  },
+  {
+    "id": "community-manager-2026",
+    "title": "Community Manager",
+    "department": "Marketing",
+    "location": "Dubai, UAE",
+    "type": "Full-time",
+    "level": "Mid-level",
+    "salary": "AED 5,500 - 8,000",
+    "description": "Build and nurture our professional community! As Community Manager, you'll be the voice of Social Mate, engaging members and creating meaningful connections both online and at our events.",
+    "responsibilities": [
+      "Manage social media channels and community engagement",
+      "Create compelling content for LinkedIn, Instagram, Facebook",
+      "Respond to community inquiries and feedback",
+      "Organize virtual networking sessions",
+      "Collaborate with events team for promotion",
+      "Track and report on community growth metrics"
+    ],
+    "requirements": [
+      "3+ years of community management experience",
+      "Strong social media expertise",
+      "Excellent writing and communication skills",
+      "Understanding of professional networking space",
+      "Experience with community platforms",
+      "Content creation and graphic design basics"
+    ],
+    "postedDate": "2026-10-05",
+    "featured": true
+  },
+  {
+    "id": "business-dev-2026",
+    "title": "Business Development Associate",
+    "department": "Sales",
+    "location": "Dubai, UAE",
+    "type": "Full-time",
+    "level": "Entry-level",
+    "salary": "AED 4,000 - 6,000",
+    "description": "Join our growing sales team! You'll identify partnership opportunities, connect with corporate clients, and help expand Social Mate's reach in Dubai's thriving business community.",
+    "responsibilities": [
+      "Identify and pitch to potential corporate partners",
+      "Build and maintain client relationships",
+      "Research market trends and competitor landscape",
+      "Attend networking events and industry conferences",
+      "Prepare proposals and negotiate sponsorships",
+      "Support the sales team with reporting and analytics"
+    ],
+    "requirements": [
+      "2+ years of sales or business development experience",
+      "Strong networking and relationship-building skills",
+      "Excellent communication abilities",
+      "Knowledge of UAE business environment",
+      "CRM software experience",
+      "Bilingual (English/Arabic) is a plus"
+    ],
+    "postedDate": "2026-09-30",
+    "featured": false
+  },
+  {
+    "id": "marketing-specialist-2026",
+    "title": "Digital Marketing Specialist",
+    "department": "Marketing",
+    "location": "Dubai, UAE",
+    "type": "Full-time",
+    "level": "Mid-level",
+    "salary": "AED 6,000 - 9,000",
+    "description": "Amplify our brand! As Digital Marketing Specialist, you'll develop and execute marketing campaigns that attract entrepreneurs, professionals, and corporate clients to Social Mate events.",
+    "responsibilities": [
+      "Plan and execute digital marketing campaigns",
+      "Manage Google Ads, Facebook Ads, and LinkedIn campaigns",
+      "Conduct SEO optimization for website and content",
+      "Analyze campaign performance and optimize",
+      "Create marketing materials and landing pages",
+      "Collaborate with content and events teams"
+    ],
+    "requirements": [
+      "3+ years of digital marketing experience",
+      "Strong SEO and SEM expertise",
+      "Experience with Google Analytics and Ads",
+      "Content marketing knowledge",
+      "Adobe Creative Suite or similar (nice to have)",
+      "Track record of successful campaigns"
+    ],
+    "postedDate": "2026-09-25",
+    "featured": false
+  }
+]
