@@ -68,7 +68,7 @@ a {
 }
 
 a:hover {
-  color: var(--accent-coral-light);
+  color: var(--accent-orange);
 }
 
 /* Containers & Layouts */
