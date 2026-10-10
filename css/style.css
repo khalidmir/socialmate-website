@@ -396,14 +396,27 @@ section {
 
 .grid-3-fixed {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(300px, 1fr));
   gap: 2rem;
   width: 100%;
+  max-width: 100%;
 }
 
-@media (max-width: 1024px) {
+.grid-3-fixed .card {
+  min-width: 0;
+}
+
+@media (max-width: 1200px) {
+  .grid-3-fixed {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 900px) {
   .grid-3-fixed {
     grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
   }
 }
 
@@ -414,6 +427,7 @@ section {
 
   .grid-3-fixed {
     grid-template-columns: 1fr;
+    gap: 1rem;
   }
 }
 
