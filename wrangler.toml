@@ -1,3 +1,4 @@
+name = "socialmate"
 pages_build_output_dir = "."
 
 # Cloudflare Pages Functions configuration
