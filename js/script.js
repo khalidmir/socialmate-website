@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // Form submission handler
-function handleFormSubmit(e) {
+async function handleFormSubmit(e) {
   e.preventDefault();
 
   const form = e.target;
@@ -57,33 +57,45 @@ function handleFormSubmit(e) {
   const name = formData.get('name');
   const email = formData.get('email');
   const message = formData.get('message');
+  const inquiryType = formData.get('inquiry_type');
 
-  if (!name || !email || !message) {
-    alert('Please fill in all required fields.');
+  if (!name || !email || !message || !inquiryType) {
+    showFormMessage(form, 'Please fill in all required fields.', 'error');
     return;
   }
 
   if (!isValidEmail(email)) {
-    alert('Please enter a valid email address.');
+    showFormMessage(form, 'Please enter a valid email address.', 'error');
     return;
   }
 
   // Show loading state
-  const submitBtn = form.querySelector('button[type="submit"]');
+  const submitBtn = form.querySelector('#submit-btn');
   const originalText = submitBtn.textContent;
   submitBtn.textContent = 'Sending...';
   submitBtn.disabled = true;
 
-  // Submit to FormSubmit (client-side)
-  // The form's action attribute handles the actual submission
+  try {
+    const response = await fetch('/api/contact', {
+      method: 'POST',
+      body: formData,
+    });
 
-  // Simulate successful submission
-  setTimeout(() => {
-    showSuccessMessage(form);
-    form.reset();
+    const data = await response.json();
+
+    if (response.ok) {
+      showFormMessage(form, data.message || 'Thank you! Your message has been sent.', 'success');
+      form.reset();
+    } else {
+      showFormMessage(form, data.error || 'An error occurred. Please try again.', 'error');
+    }
+  } catch (error) {
+    console.error('Form submission error:', error);
+    showFormMessage(form, 'An error occurred. Please try again.', 'error');
+  } finally {
     submitBtn.textContent = originalText;
     submitBtn.disabled = false;
-  }, 1000);
+  }
 }
 
 // Newsletter form submission
@@ -104,8 +116,26 @@ function handleNewsletterSubmit(e) {
   submitBtn.disabled = true;
 
   setTimeout(() => {
-    showSuccessMessage(form);
+    const successMsg = document.createElement('div');
+    successMsg.className = 'success-message';
+    successMsg.style.cssText = `
+      background: #10b981;
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+      animation: fadeInUp 0.3s ease-out;
+    `;
+    successMsg.textContent = 'Thank you for subscribing!';
+
+    form.parentNode.insertBefore(successMsg, form);
     form.reset();
+
+    setTimeout(() => {
+      successMsg.style.animation = 'fadeOut 0.3s ease-out';
+      setTimeout(() => successMsg.remove(), 300);
+    }, 3000);
+
     submitBtn.textContent = originalText;
     submitBtn.disabled = false;
   }, 1000);
@@ -117,26 +147,37 @@ function isValidEmail(email) {
   return re.test(email);
 }
 
-// Show success message
-function showSuccessMessage(form) {
-  const successMsg = document.createElement('div');
-  successMsg.className = 'success-message';
-  successMsg.style.cssText = `
-    background: #10b981;
-    color: white;
+// Show form message
+function showFormMessage(form, message, type = 'success') {
+  const messageEl = form.querySelector('#form-message');
+  const bgColor = type === 'success' ? '#10b981' : '#ef4444';
+  const textColor = 'white';
+
+  messageEl.textContent = message;
+  messageEl.style.cssText = `
+    background: ${bgColor};
+    color: ${textColor};
+    display: block;
     padding: 1rem;
     border-radius: 8px;
     margin-bottom: 1rem;
     animation: fadeInUp 0.3s ease-out;
   `;
-  successMsg.textContent = 'Thank you! We\'ll be in touch soon.';
 
-  form.parentNode.insertBefore(successMsg, form);
+  if (type === 'success') {
+    setTimeout(() => {
+      messageEl.style.animation = 'fadeOut 0.3s ease-out';
+      setTimeout(() => {
+        messageEl.style.display = 'none';
+        messageEl.style.animation = '';
+      }, 300);
+    }, 4000);
+  }
+}
 
-  setTimeout(() => {
-    successMsg.style.animation = 'fadeOut 0.3s ease-out';
-    setTimeout(() => successMsg.remove(), 300);
-  }, 3000);
+// Show success message (legacy, kept for backward compatibility)
+function showSuccessMessage(form) {
+  showFormMessage(form, 'Thank you! We\'ll be in touch soon.', 'success');
 }
 
 // Intersection Observer for fade-in animations

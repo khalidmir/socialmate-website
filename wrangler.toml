@@ -1,0 +1,23 @@
+name = "socialmate"
+type = "site"
+account_id = "d8ac64aacf6579f90ba1a98393b2444e"
+workers_dev = false
+routes = [
+  { pattern = "socialmate.org/api/*", zone_name = "socialmate.org" }
+]
+site = { bucket = "." }
+
+[env.production]
+routes = [
+  { pattern = "socialmate.org/api/*", zone_name = "socialmate.org" }
+]
+
+[env.production.vars]
+ENVIRONMENT = "production"
+
+[env.production.secrets]
+GMAIL_SERVICE_ACCOUNT_JSON = ""
+
+[[env.production.routes]]
+pattern = "socialmate.org/api/*"
+zone_name = "socialmate.org"
