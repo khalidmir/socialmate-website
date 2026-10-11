@@ -363,6 +363,182 @@
         grid-template-columns: 1fr;
       }
     }
+
+    .application-section {
+      background: var(--primary-dark);
+      padding: 3rem 2rem;
+    }
+
+    .application-section h2 {
+      color: var(--accent-coral);
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    .talent-pool-note {
+      background: linear-gradient(135deg, rgba(255, 107, 74, 0.1), rgba(255, 157, 77, 0.1));
+      border-left: 4px solid var(--accent-coral);
+      padding: 1.5rem;
+      border-radius: 6px;
+      margin-bottom: 2rem;
+      color: var(--text-secondary);
+    }
+
+    .talent-pool-note strong {
+      color: var(--accent-coral);
+    }
+
+    .application-intro {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 2rem;
+      color: var(--text-secondary);
+    }
+
+    .application-form {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      color: var(--text-primary);
+      font-weight: 500;
+      font-size: 0.95rem;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.75rem;
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      background: var(--neutral-gray);
+      color: var(--text-primary);
+      font-family: inherit;
+      font-size: 0.95rem;
+      transition: border-color 0.3s ease;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--accent-coral);
+      box-shadow: 0 0 0 3px rgba(255, 107, 74, 0.1);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    .file-input-wrapper {
+      position: relative;
+      display: inline-block;
+      width: 100%;
+    }
+
+    .file-input-label {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 1rem;
+      border: 2px dashed var(--border-color);
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      color: var(--text-secondary);
+      background: rgba(255, 107, 74, 0.05);
+    }
+
+    .file-input-label:hover {
+      border-color: var(--accent-coral);
+      color: var(--accent-coral);
+    }
+
+    .file-input-wrapper input[type="file"] {
+      display: none;
+    }
+
+    .file-name {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      margin-top: 0.5rem;
+    }
+
+    .form-submit {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      margin-top: 2rem;
+    }
+
+    .btn-submit {
+      background: var(--accent-coral);
+      color: white;
+      border: none;
+      padding: 0.9rem 2.5rem;
+      border-radius: 6px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .btn-submit:hover {
+      background: var(--accent-coral-light);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 16px rgba(255, 107, 74, 0.3);
+    }
+
+    .form-hint {
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      margin-top: 1rem;
+    }
+
+    .form-success {
+      display: none;
+      background: linear-gradient(135deg, rgba(72, 187, 120, 0.1), rgba(76, 175, 80, 0.1));
+      border-left: 4px solid #48bb78;
+      padding: 1rem 1.5rem;
+      border-radius: 6px;
+      color: #48bb78;
+      margin-bottom: 1.5rem;
+      font-weight: 500;
+    }
+
+    .form-success.show {
+      display: block;
+    }
+
+    @media (max-width: 768px) {
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+
+      .application-section {
+        padding: 2rem 1.5rem;
+      }
+    }
   </style>
 </head>
 <body>
@@ -523,6 +699,99 @@
     </div>
   </section>
 
+  <!-- Application Section -->
+  <section class="application-section">
+    <div class="container">
+      <h2>Submit Your Resume</h2>
+
+      <div class="talent-pool-note">
+        <strong>No current openings?</strong> Even if there are no specific positions available right now, we'd love to hear from you. We maintain a talent pool of exceptional professionals and reach out when opportunities align with your skills and goals.
+      </div>
+
+      <p class="application-intro">Tell us about yourself and why you'd be excited to work with Social Mate. Upload your resume and we'll keep you in our talent pool for future opportunities.</p>
+
+      <form class="application-form" action="https://formsubmit.co/info@mail.socialmate.org" method="POST" id="applicationForm" enctype="multipart/form-data">
+        <!-- FormSubmit configuration -->
+        <input type="hidden" name="_subject" value="New career application at Social Mate" />
+        <input type="hidden" name="_template" value="table" />
+        <input type="hidden" name="_captcha" value="true" />
+        <input type="hidden" name="_next" value="https://socialmate.org/careers.html?sent=1" />
+        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" />
+
+        <div class="form-success" id="formSuccess">
+          ✓ Thank you! Your application has been received. We'll review your resume and get back to you soon.
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="app-name">Full Name</label>
+            <input type="text" id="app-name" name="Full Name" placeholder="Your name" required />
+          </div>
+          <div class="form-group">
+            <label for="app-email">Email Address</label>
+            <input type="email" id="app-email" name="Email" placeholder="your@email.com" required />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="app-phone">Phone Number</label>
+            <input type="tel" id="app-phone" name="Phone Number" placeholder="+971 50 XXX XXXX" />
+          </div>
+          <div class="form-group">
+            <label for="app-interest">Areas of Interest</label>
+            <select id="app-interest" name="Areas of Interest" required>
+              <option value="">Select one or more areas</option>
+              <option>Events & Operations</option>
+              <option>Sales & Business Development</option>
+              <option>Marketing & Community</option>
+              <option>Networking & Partnerships</option>
+              <option>Technology & Digital</option>
+              <option>Content & Communications</option>
+              <option>Analytics & Strategy</option>
+              <option>Finance & Administration</option>
+              <option>Other</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="app-resume">Upload Resume</label>
+          <div class="file-input-wrapper">
+            <label for="app-resume" class="file-input-label">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="17 8 12 3 7 8"></polyline>
+                <line x1="12" y1="3" x2="12" y2="15"></line>
+              </svg>
+              <span id="fileName">Click to upload resume (PDF, DOC, DOCX)</span>
+            </label>
+            <input type="file" id="app-resume" name="Resume" accept=".pdf,.doc,.docx" required />
+            <div class="file-name" id="selectedFile"></div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="app-message">Tell us about yourself</label>
+          <textarea id="app-message" name="About You" placeholder="What excites you about Social Mate? What are your key skills and experience?" required></textarea>
+        </div>
+
+        <div class="form-submit">
+          <button type="submit" class="btn-submit">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12 16 16 12 12 8"></polyline>
+              <line x1="8" y1="12" x2="16" y2="12"></line>
+            </svg>
+            Submit Application
+          </button>
+        </div>
+
+        <p class="form-hint">We never share your information. We reply to all submissions within 3-5 working days.</p>
+      </form>
+    </div>
+  </section>
+
   <!-- CTA Section -->
   <section>
     <div class="container">
@@ -596,5 +865,36 @@
   </footer>
 
   <script src="/js/script.js"></script>
+
+  <script>
+    // Handle file input display
+    const resumeInput = document.getElementById('app-resume');
+    const fileNameDisplay = document.getElementById('fileName');
+    const selectedFileDisplay = document.getElementById('selectedFile');
+
+    if (resumeInput) {
+      resumeInput.addEventListener('change', function(e) {
+        if (this.files.length > 0) {
+          const fileName = this.files[0].name;
+          fileNameDisplay.textContent = fileName;
+          selectedFileDisplay.textContent = '✓ ' + fileName + ' (' + (this.files[0].size / 1024).toFixed(0) + ' KB)';
+        }
+      });
+    }
+
+    // Show success banner if redirected back from successful submit
+    if (new URLSearchParams(window.location.search).get('sent') === '1') {
+      const formSuccess = document.getElementById('formSuccess');
+      const applicationForm = document.getElementById('applicationForm');
+      if (formSuccess && applicationForm) {
+        formSuccess.classList.add('show');
+        applicationForm.reset();
+        selectedFileDisplay.textContent = '';
+        fileNameDisplay.textContent = 'Click to upload resume (PDF, DOC, DOCX)';
+        setTimeout(function() { window.history.replaceState({}, '', 'careers.html'); }, 50);
+        formSuccess.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    }
+  </script>
 </body>
 </html>
