@@ -1,7 +1,3 @@
-name = "socialmate"
-type = "site"
-account_id = "fbd93412906e1405f1b4aa34891870bb"
-site = { bucket = "." }
 pages_build_output_dir = "."
 
 # Cloudflare Pages Functions configuration
