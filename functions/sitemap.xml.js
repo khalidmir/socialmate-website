@@ -1,84 +1,117 @@
-export async function onRequest(context) {
-  try {
-    const baseUrl = 'https://socialmate.org';
+// Dynamic XML sitemap for socialmate.org.
+// Core pages come from STATIC_PAGES. Blog posts and job listings are read from
+// the data files on every build, so new entries appear without editing this file.
+// If a data file cannot be read, the sitemap still serves the core pages.
 
-    // Fetch with timeout to prevent Cloudflare Functions from timing out
-    const fetchWithTimeout = (url, timeout = 10000) => {
-      return Promise.race([
-        fetch(url),
-        new Promise((_, reject) =>
-          setTimeout(() => reject(new Error('Fetch timeout')), timeout)
-        )
-      ]);
-    };
+const SITE = 'https://socialmate.org';
+const DATE_PATTERN = /^\d{4}-\d{2}-\d{2}$/;
 
-    const blogPostsResponse = await fetchWithTimeout(`${baseUrl}/blog-posts.json`);
-    const jobsResponse = await fetchWithTimeout(`${baseUrl}/jobs-openings.json`);
+const STATIC_PAGES = [
+  { loc: '/', priority: '1.0', changefreq: 'weekly', lastmod: '2026-10-27' },
+  { loc: '/events.html', priority: '0.95', changefreq: 'weekly', lastmod: '2026-10-27' },
+  { loc: '/networking.html', priority: '0.9', changefreq: 'weekly', lastmod: '2026-10-27' },
+  { loc: '/services.html', priority: '0.85', changefreq: 'monthly', lastmod: '2026-10-27' },
+  { loc: '/blog.html', priority: '0.85', changefreq: 'weekly', lastmod: '2026-10-27' },
+  { loc: '/careers.html', priority: '0.9', changefreq: 'weekly', lastmod: '2026-10-27' },
+  { loc: '/about.html', priority: '0.8', changefreq: 'monthly', lastmod: '2026-10-27' },
+  { loc: '/contact.html', priority: '0.8', changefreq: 'monthly', lastmod: '2026-10-27' },
+  { loc: '/privacy.html', priority: '0.5', changefreq: 'yearly', lastmod: '2026-10-27' },
+  { loc: '/terms.html', priority: '0.5', changefreq: 'yearly', lastmod: '2026-10-27' },
+  { loc: '/cookies.html', priority: '0.5', changefreq: 'yearly', lastmod: '2026-10-27' }
+];
 
-    if (!blogPostsResponse.ok || !jobsResponse.ok) {
-      console.error('Failed to fetch data files', {
-        blog: blogPostsResponse.status,
-        jobs: jobsResponse.status
-      });
-      return new Response('Data files not found', { status: 404 });
-    }
+// Reads a static data file from the same deployment. Uses the assets binding when
+// present, so the request never leaves Cloudflare.
+async function readDataFile(context, path) {
+  const url = new URL(path, context.request.url);
+  const response = context.env.ASSETS
+    ? await context.env.ASSETS.fetch(url)
+    : await fetch(url);
+  if (!response.ok) {
+    throw new Error(`${path} returned ${response.status}`);
+  }
+  return response.json();
+}
 
-    const blogPosts = await blogPostsResponse.json();
-    const jobs = await jobsResponse.json();
+// Keeps only valid YYYY-MM-DD dates, so a bad data entry cannot break the XML.
+function safeDate(value, fallback) {
+  return typeof value === 'string' && DATE_PATTERN.test(value) ? value : fallback;
+}
 
-    // Static pages configuration
-    const staticPages = [
-      { loc: '/', priority: '1.0', changefreq: 'weekly', lastmod: '2026-10-10' },
-      { loc: '/events.html', priority: '0.95', changefreq: 'weekly', lastmod: '2026-10-10' },
-      { loc: '/networking.html', priority: '0.9', changefreq: 'weekly', lastmod: '2026-10-10' },
-      { loc: '/services.html', priority: '0.85', changefreq: 'monthly', lastmod: '2026-10-10' },
-      { loc: '/about.html', priority: '0.8', changefreq: 'monthly', lastmod: '2026-10-10' },
-      { loc: '/contact.html', priority: '0.8', changefreq: 'monthly', lastmod: '2026-10-10' },
-      { loc: '/blog.html', priority: '0.85', changefreq: 'weekly', lastmod: '2026-10-10' },
-      { loc: '/careers.html', priority: '0.85', changefreq: 'weekly', lastmod: '2026-10-10' },
-      { loc: '/privacy.html', priority: '0.5', changefreq: 'yearly', lastmod: '2026-10-10' },
-      { loc: '/terms.html', priority: '0.5', changefreq: 'yearly', lastmod: '2026-10-10' },
-      { loc: '/cookies.html', priority: '0.5', changefreq: 'yearly', lastmod: '2026-10-10' }
-    ];
+// Data files store the flag as the string 'True' or 'False', so compare the text.
+function isFeatured(value) {
+  return value === true || String(value).toLowerCase() === 'true';
+}
 
-    // Generate blog post URLs
-    const blogUrls = blogPosts.map(post => ({
+function escapeXml(value) {
+  return String(value)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&apos;');
+}
+
+function blogEntries(posts) {
+  return posts
+    .filter(post => post && post.slug)
+    .map(post => ({
       loc: `/blog/${post.slug}.html`,
-      priority: post.featured ? '0.85' : '0.75',
+      priority: isFeatured(post.featured) ? '0.85' : '0.75',
       changefreq: 'monthly',
-      lastmod: post.date
+      lastmod: safeDate(post.date, '2026-10-01')
     }));
+}
 
-    // Generate job URLs
-    const jobUrls = jobs.map(job => ({
+function jobEntries(jobs) {
+  return jobs
+    .filter(job => job && job.id)
+    .map(job => ({
       loc: `/jobs/${job.id}.html`,
       priority: job.featured ? '0.8' : '0.75',
       changefreq: 'weekly',
-      lastmod: job.postedDate
+      lastmod: safeDate(job.postedDate, '2026-10-01')
     }));
+}
 
-    // Combine all URLs
-    const allUrls = [...staticPages, ...blogUrls, ...jobUrls];
+function renderXml(entries) {
+  const urls = entries.map(entry => `  <url>
+    <loc>${escapeXml(SITE + entry.loc)}</loc>
+    <lastmod>${entry.lastmod}</lastmod>
+    <changefreq>${entry.changefreq}</changefreq>
+    <priority>${entry.priority}</priority>
+  </url>`);
 
-    // Generate XML sitemap
-    const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
+  return `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${allUrls.map(url => `  <url>
-    <loc>https://socialmate.org${url.loc}</loc>
-    <lastmod>${url.lastmod}</lastmod>
-    <changefreq>${url.changefreq}</changefreq>
-    <priority>${url.priority}</priority>
-  </url>`).join('\n')}
+${urls.join('\n')}
 </urlset>`;
+}
 
-    return new Response(sitemapXml, {
-      headers: {
-        'Content-Type': 'application/xml; charset=utf-8',
-        'Cache-Control': 'public, max-age=86400'
-      }
-    });
-  } catch (error) {
-    console.error('Sitemap generation error:', error);
-    return new Response('Error generating sitemap', { status: 500 });
+export async function onRequest(context) {
+  const [postsResult, jobsResult] = await Promise.allSettled([
+    readDataFile(context, '/blog-posts.json'),
+    readDataFile(context, '/jobs-openings.json')
+  ]);
+
+  const entries = [...STATIC_PAGES];
+
+  if (postsResult.status === 'fulfilled' && Array.isArray(postsResult.value)) {
+    entries.push(...blogEntries(postsResult.value));
+  } else {
+    console.error('Sitemap: blog data unavailable', postsResult.reason);
   }
+
+  if (jobsResult.status === 'fulfilled' && Array.isArray(jobsResult.value)) {
+    entries.push(...jobEntries(jobsResult.value));
+  } else {
+    console.error('Sitemap: job data unavailable', jobsResult.reason);
+  }
+
+  return new Response(renderXml(entries), {
+    headers: {
+      'Content-Type': 'application/xml; charset=utf-8',
+      'Cache-Control': 'public, max-age=3600, s-maxage=3600'
+    }
+  });
 }

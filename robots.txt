@@ -30,6 +30,13 @@ Allow: /
 User-agent: ChatGPT-User
 Allow: /
 
+# Google AI training and Apple AI crawlers - allow
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
 # Google search
 User-agent: Googlebot
 Allow: /

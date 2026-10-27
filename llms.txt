@@ -77,10 +77,10 @@ Blog posts are stored in /blog-posts.json and automatically included in the XML 
 ### Careers
 https://socialmate.org/careers.html
 
-Explore career opportunities at Social Mate across departments including Events Management, Marketing, Community Building, and Business Development. We're building a team of passionate professionals dedicated to creating meaningful business connections in Dubai.
+Sales jobs in UAE and part-time jobs in Dubai at Social Mate. Current openings: Event Sales Representative and Sponsorship & Partnerships Assistant, both part-time and performance-based, with applications through Joblancer at https://joblancer.app/c/socialmate.
 
-**Dynamic Job Listings:**
-Current open positions are stored in /jobs-openings.json and automatically updated on the careers page. New job postings are instantly visible to candidates when added to the data source. Job opportunities at Social Mate span from entry-level to senior roles, with focus on professional growth and community impact.
+**Job Listings:**
+Job listing pages are served at /jobs/{job-id}.html and are included in the XML sitemap. Open sales roles are listed on the careers page. Applications for sales roles are handled through Joblancer.
 
 ## Key Topics & Keywords
 
@@ -108,22 +108,21 @@ Powered by Kreative Minds (https://kreativeminds.ae)
 
 ## Dynamic Content & Sitemap
 
-**Automatic Sitemap Generation:**
-The website uses dynamic sitemap generation via /sitemap.xml. This function automatically:
-- Indexes all main pages (homepage, events, networking, services, about, contact, blog)
-- Includes all blog posts from blog-posts.json
-- Updates priorities based on content type
-- Maintains freshness signals (lastmod dates)
-- Provides proper changefreq for crawlers
+**Dynamic XML Sitemap:**
+The sitemap at https://socialmate.org/sitemap.xml is generated on each request (cached for one hour) and includes:
+- Core pages: homepage, events, networking, services, blog, careers, about, contact, privacy, terms, cookies
+- Blog posts from /blog-posts.json
+- Job listings from /jobs-openings.json
 
-When new blog posts are added to /blog-posts.json, they automatically appear in:
+Each entry has a lastmod date, a changefreq and a priority. If a data file cannot be read, the sitemap still lists the core pages.
+
+When new blog posts are added to /blog-posts.json, they appear in:
 - The blog listing page (/blog.html)
 - The XML sitemap (/sitemap.xml)
-- Search engine indexation
 
 ## Content Quality & Accuracy
 
-All event information, service descriptions, and business details on the Social Mate website are accurate and maintained current. The platform connects real professionals and businesses seeking meaningful networking opportunities in Dubai and the UAE. Blog content provides genuine insights from professional networking experts and event industry professionals.
+Event details are published on the events page (https://socialmate.org/events.html). For current dates and registration, check that page or contact Social Mate. The platform connects real professionals and businesses seeking meaningful networking opportunities in Dubai and the UAE. Blog content provides genuine insights from professional networking experts and event industry professionals.
 
 ## Privacy & Legal
 
